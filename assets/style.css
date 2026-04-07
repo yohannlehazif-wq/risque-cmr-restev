@@ -68,3 +68,17 @@ header h1 {
     width: 280px;
     font-size: 18px;
     border: 2px solid #2A6DB0;
+#search {
+    padding: 12px;
+    width: 280px;
+    font-size: 18px;
+    border: 2px solid #2A6DB0;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+#search:focus {
+    border-color: #1E4E7A;
+    outline: none;
+}
