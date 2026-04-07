@@ -1,166 +1,410 @@
 [
   {
-    "metier": "Coiffeur / Coiffeuse",
+    "metier": "Soudeur industriel",
     "risques": [
-      "Colorants oxydants classés irritants",
-      "Persulfates respiratoires (asthme professionnel)",
-      "Aérosols irritants",
-      "Allergènes parfumés"
+      "Fumées de soudage contenant chrome VI, nickel, manganèse",
+      "Gaz irritants : ozone, oxydes d'azote",
+      "Poussières métalliques ultrafines (<1 µm)",
+      "Émanations lors du meulage ou coupage thermique"
     ],
     "actions": [
-      "Port de gants nitrile homologués EN374",
-      "Ventilation 25 m³/h/personne",
-      "Substitution des poudres par des pâtes pour limiter les aérosols",
-      "Stockage des produits en armoire ventilée",
-      "Affichage et consultation des FDS"
+      "Captage obligatoire à la source (bras articulé, torche aspirante)",
+      "Ventilation générale vérifiée régulièrement",
+      "Port d’un masque P3 ou d’un appareil à ventilation assistée",
+      "Nettoyage sans soufflette : aspirateur ou chiffon humide",
+      "Organisation de zones de soudage ventilées",
+      "Hygiène stricte : lavage des mains, douche en fin de journée"
     ],
     "liens": [
-      { "titre": "INRS – Coiffure", "url": "https://www.inrs.fr/risques/coiffure.html" }
+      {
+        "titre": "INRS – Fumées de soudage",
+        "url": "https://www.inrs.fr/risques/fumees-soudage.html"
+      }
     ]
   },
-
+  {
+    "metier": "Chaudronnier",
+    "risques": [
+      "Fumées métalliques lors du soudage",
+      "Poussières de meulage",
+      "Émanations de décapants et solvants",
+      "Exposition aux revêtements chauffés (peintures, huiles brûlées)"
+    ],
+    "actions": [
+      "Ventilation adaptée avec extraction localisée",
+      "Masque P3 ou ventilé selon opérations",
+      "Gants résistants aux projections et produits",
+      "Limiter le meulage à sec, privilégier aspiration",
+      "Stockage sécurisé des décapants et solvants"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Métallier",
+    "risques": [
+      "Poussières métalliques (ponçage, sciage, meulage)",
+      "Brouillards d’huiles de coupe",
+      "Gaz chauds lors de certaines découpes",
+      "Émanations lors du traitement de surface"
+    ],
+    "actions": [
+      "Aspiration localisée sur machines fixes",
+      "Masque P3 lors des phases émissives",
+      "Organisation du poste pour limiter l’empoussièrement",
+      "Gants anti-coupure et anti-chimique selon tâches"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Carrossier peintre",
+    "risques": [
+      "Isocyanates (peintures bi-composants)",
+      "Solvants organiques (COV)",
+      "Brouillards de peinture",
+      "Poussières de ponçage avant mise en peinture"
+    ],
+    "actions": [
+      "Application obligatoire en cabine ventilée",
+      "Port d’un masque A2P3 ou appareil à adduction d’air",
+      "Gants nitrile adaptés solvants",
+      "Aspirations locales lors du ponçage",
+      "Substitution des peintures fortement solvantées"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Mécanicien automobile",
+    "risques": [
+      "Huiles usagées classées CMR",
+      "Dégraissants solvants volatils",
+      "Benzène présent dans carburants",
+      "Aérosols nettoyants et lubrifiants"
+    ],
+    "actions": [
+      "Port de gants nitrile haute résistance",
+      "Éviter soufflette pour limiter l’aérosolisation",
+      "Ventilation de l’atelier en continu",
+      "Fontaines de dégraissage fermées",
+      "Hygiène mains : nettoyage + crème barrière"
+    ],
+    "liens": []
+  }
+][
+  {
+    "metier": "Opérateur plasturgie",
+    "risques": [
+      "Émissions de gaz et vapeurs lors de l’injection/extrusion de plastiques",
+      "Dégagement de produits de dégradation thermique des polymères",
+      "Exposition possible à des agents CMR selon additifs et pigments",
+      "Manutention de sacs de granulés et poussières plastiques"
+    ],
+    "actions": [
+      "Captage à la source au niveau des buses d’injection et têtes d’extrusion",
+      "Ventilation générale performante pour maintenir l’air sain",
+      "Substitution des formulations les plus dangereuses lorsque possible",
+      "Port de gants, lunettes et protection respiratoire lors des purges/maintenance",
+      "Organisation du poste pour limiter les manutentions et les poussières"
+    ],
+    "liens": [
+      {
+        "titre": "INRS – Plasturgie",
+        "url": "https://www.inrs.fr/metiers/industrie/plasturgie.html"
+      }
+    ]
+  },
+  {
+    "metier": "Opérateur composite",
+    "risques": [
+      "Vapeurs de styrène (résines polyester) classé irritant et toxique",
+      "Exposition aux solvants (acétone) et additifs résines",
+      "Poussières de fibres (verre, carbone) lors de la découpe",
+      "Émissions toxiques lors de la polymérisation à chaud"
+    ],
+    "actions": [
+      "Ventilation efficace au niveau des moules et cabines",
+      "Substitution par des résines à faible émission de styrène lorsque disponible",
+      "Captage des poussières lors du ponçage et de l’usinage",
+      "Port de masque A2P3 et gants adaptés solvants",
+      "Contrôle atmosphérique régulier et surveillance des VLEP"
+    ],
+    "liens": [
+      {
+        "titre": "INRS – Styrène, fiche toxicologique",
+        "url": "https://www.inrs.fr/publications/bdd/fichetox/fiche.html?refINRS=FICHETOX_2"
+      }
+    ]
+  },
+  {
+    "metier": "Technicien maintenance industrielle",
+    "risques": [
+      "Solvants de dégraissage (risques neurotoxiques et cutanés)",
+      "Huiles, graisses et lubrifiants pouvant contenir des agents CMR",
+      "Aérosols de nettoyants et brouillards d’huile",
+      "Produits détergents pour entretien machines"
+    ],
+    "actions": [
+      "Substitution systématique des solvants les plus dangereux si possible",
+      "Travail en ventilation ou bras aspirant lors du dégraissage",
+      "Port de gants adaptés solvants + lunettes",
+[
+  {
+    "metier": "Peintre bâtiment",
+    "risques": [
+      "Exposition aux solvants",
+      "Aérosols de peinture",
+      "Poussières de ponçage",
+      "Produits décapants"
+    ],
+    "actions": [
+      "Favoriser les peintures à faible émission",
+      "Assurer une ventilation suffisante",
+      "Port d’un masque adapté aux vapeurs et poussières",
+      "Éviter l’utilisation de solvants concentrés en espace clos",
+      "Lunettes, gants et vêtements de protection"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Peintre industriel",
+    "risques": [
+      "Aérosols de peinture",
+      "Solvants organiques",
+      "Isocyanates dans les peintures bi-composants"
+    ],
+    "actions": [
+      "Travail en cabine ventilée",
+      "Port d’un appareil respiratoire adapté",
+      "Utilisation de gants résistants aux solvants",
+      "Nettoyage avec fontaines ou systèmes fermés"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Maçon",
+    "risques": [
+      "Poussières de ciment",
+      "Hydrofuges et additifs",
+      "Aérosols de nettoyage"
+    ],
+    "actions": [
+      "Masque anti-poussières lors de la préparation",
+      "Gants chimiques pour additifs",
+      "Arrosage pour limiter la poussière",
+      "Ventilation des postes intérieurs"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Carreleur",
+    "risques": [
+      "Poussières de découpe",
+      "Colles et résines",
+      "Aérosols lors du nettoyage"
+    ],
+    "actions": [
+      "Aspiration locale lors de la découpe",
+      "Gants adaptés aux colles",
+      "Masque contre les poussières fines",
+      "Aération de la zone de travail"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Couvreur zingueur",
+    "risques": [
+      "Fumées lors de chauffes",
+      "Dégagements des produits de traitement",
+      "Aérosols nettoyants"
+    ],
+    "actions": [
+      "Port d’un masque filtrant",
+      "Gants résistants aux produits",
+      "Ventilation naturelle en extérieur",
+      "Éviter le chauffage en zone confinée"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Étancheur",
+    "risques": [
+      "Vapeurs de bitume",
+      "Solvants",
+      "Produits collants"
+    ],
+    "actions": [
+      "Port d’un masque adapté aux vapeurs",
+      "Gants anti-chaleur",
+      "Ventilation ou travail en extérieur",
+      "Réduction des expositions prolongées"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Plâtrier plaquiste",
+    "risques": [
+      "Poussières fines",
+      "Enduits",
+      "Colles"
+    ],
+    "actions": [
+      "Masque anti-poussières P3",
+      "Aspiration à la source",
+      "Gants de protection",
+      "Nettoyage humide"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Poseur de sols résine",
+[
+  {
+    "metier": "Coiffeur / Coiffeuse",
+    "risques": [
+      "Colorants oxydants et sensibilisants",
+      "Persulfates inhalés",
+      "Aérosols irritants",
+      "Produits parfumés allergisants"
+    ],
+    "actions": [
+      "Ventilation générale suffisante",
+      "Port de gants nitrile lors de la préparation et application",
+      "Utilisation de produits non sensibilisants si possible",
+      "Limiter l’aérosolisation lors du mélange de poudres"
+    ],
+    "liens": []
+  },
   {
     "metier": "Barbier",
     "risques": [
       "Sprays parfumés",
-      "Alcools et lotions",
-      "Aérosols irritants"
+      "Lotions alcoolisées",
+      "Aérosols désinfectants"
     ],
     "actions": [
-      "Ventilation naturelle ou mécanique",
-      "Utilisation de produits hypoallergéniques",
-      "Port de gants lors d'applications irritantes"
+      "Ventiler régulièrement le local",
+      "Port de gants si irritation cutanée possible",
+      "Limiter l’usage des sprays en espace réduit"
     ],
-    "liens": [
-      { "titre": "INRS – Cosmétiques", "url": "https://www.inrs.fr" }
-    ]
+    "liens": []
   },
-
   {
     "metier": "Esthéticienne",
     "risques": [
-      "Solvants dissolvants (acétone)",
+      "Solvants (acétone…)",
       "Résines UV",
-      "Aérosols parfumés"
+      "Aérosols désodorisants",
+      "Produits de soin parfumés"
     ],
     "actions": [
       "Port de gants nitrile fins",
-      "Ventilation locale au poste",
-      "Substitution par des produits non CMR"
+      "Ventilation locale au poste de travail",
+      "Substitution vers produits à faible émission",
+      "Fermeture hermétique des flacons après usage"
     ],
-    "liens": [
-      { "titre": "INRS – Bien-être", "url": "https://www.inrs.fr" }
-    ]
+    "liens": []
   },
-
   {
-    "metier": "Boulanger",
+    "metier": "Agent d’entretien",
     "risques": [
-      "Dégraissants alcalins",
-      "Désinfectants chlorés",
-      "Aérosols irritants"
-    ],
-    "actions": [
-      "Dilution sécurisée (eau puis produit)",
-      "Gants de protection chimique",
-      "Ventilation du fournil",
-      "Nettoyage hors présence du personnel"
-    ],
-    "liens": [
-      { "titre": "INRS – Boulangerie", "url": "https://www.inrs.fr" }
-    ]
-  },
-
-  {
-    "metier": "Pâtissier",
-    "risques": [
-      "Solvants alimentaires",
-      "Dégraissants puissants",
-      "Produits désinfectants"
-    ],
-    "actions": [
-      "Port de lunettes anti-projection",
-      "Gants nitrile",
-      "Aération après nettoyage"
-    ],
-    "liens": [
-      { "titre": "INRS – Agroalimentaire", "url": "https://www.inrs.fr" }
-    ]
-  },
-
-  {
-    "metier": "Cuisinier",
-    "risques": [
-      "Dégraissants cuisine",
-      "Décapants four",
-      "Vapeurs irritantes"
-    ],
-    "actions": [
-      "Port de gants et lunettes",
-      "Utiliser des produits en dilution faible",
-      "Ventiler pendant l’usage"
-    ],
-    "liens": [
-      { "titre": "INRS – Restauration", "url": "https://www.inrs.fr" }
-    ]
-  },
-
-  {
-    "metier": "Serveur",
-    "risques": [
-      "Aérosols désinfectants",
-      "Nettoyants surfaces irritants"
-    ],
-    "actions": [
-      "Ventilation du restaurant",
-      "Port de gants jetables si manipulation",
-      "Minimiser l’utilisation d’aérosols"
-    ],
-    "liens": [
-      { "titre": "INRS – CHR", "url": "https://www.inrs.fr" }
-    ]
-  },
-
-  {
-    "metier": "Agent d'entretien",
-    "risques": [
-      "Javel et dérivés chlorés",
+      "Eau de Javel",
       "Dégraissants alcalins",
       "Acides détartrants",
       "Ammoniums quaternaires"
     ],
     "actions": [
-      "Gants, lunettes, tablier",
-      "Ne jamais mélanger Javel + acide",
-      "Dilution sécurisée (ajouter produit à l'eau)",
-      "Ventilation immédiate"
+      "Gants + lunettes obligatoires",
+      "Ne pas mélanger produits (notamment Javel + acide)",
+      "Aération 10 à 15 minutes après application",
+      "Dilution sécurisée du produit dans l’eau"
     ],
-    "liens": [
-      { "titre": "INRS – Nettoyage", "url": "https://www.inrs.fr/risques/nettoyage.html" }
-    ]
+    "liens": []
   },
-
   {
     "metier": "Agent de désinfection",
     "risques": [
-      "Biocides CMR",
-      "Peroxydes concentrés",
-      "Chlore"
+      "Biocides concentrés",
+      "Vapeurs chlorées",
+      "Peroxydes",
+      "Aérosols de désinfection"
     ],
     "actions": [
-      "Masque A2P3",
-      "Combinaison jetable type 4/5",
-      "Ventilation et interdiction d'accès après application",
-      "Traçabilité des produits utilisés"
+      "Protection respiratoire adaptée",
+      "Ventilation des locaux pendant et après intervention",
+      "Respect strict des dosages et temps de contact",
+      "Gants et combinaison selon protocole"
     ],
-    "liens": [
-      { "titre": "INRS – Biocides", "url": "https://www.inrs.fr" }
-    ]
+    "liens": []
   },
-
   {
     "metier": "Blanchisseur industriel",
     "risques": [
       "Hypochlorite",
       "Détachants solvants",
-
+      "Produits dégraissants concentrés"
+    ],
+    "actions": [
+      "Gants et lunettes anti-projection",
+      "Ventilation générale du local",
+      "Utilisation de systèmes de dosage automatique",
+      "Ne pas transvaser les produits en dehors des zones prévues"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Employé de supermarché",
+    "risques": [
+      "Aérosols nettoyants",
+      "Désinfectants de surface",
+      "Produits de maintenance rayon"
+    ],
+    "actions": [
+      "Port de gants à usage unique si manipulation prolongée",
+      "Ventilation régulière des zones de nettoyage",
+      "Limiter l’utilisation d’aérosols près des clients"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Boulanger",
+    "risques": [
+      "Produits détartrants",
+      "Détergents dégraissants",
+      "Désinfectants alimentaires"
+    ],
+    "actions": [
+      "Ventilation du fournil après nettoyage",
+      "Gants et lunettes pour produits corrosifs",
+      "Rinçage obligatoire des surfaces après application"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Pâtissier",
+    "risques": [
+      "Nettoyants alcalins",
+      "Solvants alimentaires",
+      "Désinfectants"
+    ],
+    "actions": [
+      "Gants de protection adaptés",
+      "Ventilation après pulvérisation des produits",
+      "Éviter l’utilisation excessive d’aérosols"
+    ],
+    "liens": []
+  },
+  {
+    "metier": "Poissonnier",
+    "risques": [
+      "Acides détartrants",
+      "Désinfectants surface",
+      "Aérosols nettoyants"
+    ],
+    "actions": [
+      "Gants longue manche",
+      "Lunettes anti-projection",
+      "Aération du poste après nettoyage",
+      "Rinçage systématique des surfaces"
+    ],
+    "liens": []
+  }
+]
