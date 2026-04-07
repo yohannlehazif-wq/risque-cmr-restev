@@ -1,2 +1,122 @@
-[]
-``
+[
+  {
+    "metier": "Coiffure",
+    "risques": [
+      "Colorants oxydants",
+      "Persulfates",
+      "Aérosols irritants"
+    ],
+    "actions": [
+      "Ventilation du salon",
+      "Port de gants nitrile",
+      "Utilisation de produits non CMR"
+    ],
+    "liens": [
+      { "titre": "INRS - Coiffure", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Peintre industriel",
+    "risques": [
+      "Isocyanates",
+      "Solvants aromatiques",
+      "Résines époxy"
+    ],
+    "actions": [
+      "Cabine ventilée",
+      "Masque A2P3",
+      "Substitution produits CMR"
+    ],
+    "liens": [
+      { "titre": "INRS - Peinture", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Soudeur",
+    "risques": [
+      "Fumées métalliques",
+      "Ozone",
+      "Particules fines"
+    ],
+    "actions": [
+      "Aspiration à la source",
+      "Masque ventilé",
+      "Contrôles atmosphériques"
+    ],
+    "liens": [
+      { "titre": "INRS - Soudage", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Mécanicien automobile",
+    "risques": [
+      "Huiles usagées",
+      "Dégraissants solvants",
+      "Carburants benzène"
+    ],
+    "actions": [
+      "Gants nitrile épais",
+      "Ventilation atelier",
+      "Substitution solvants"
+    ],
+    "liens": [
+      { "titre": "INRS - Garage", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Agent d'entretien",
+    "risques": [
+      "Eau de Javel",
+      "Dégraissants concentrés",
+      "Aérosols allergisants"
+    ],
+    "actions": [
+      "Ventilation",
+      "Dilution produits",
+      "Gants + lunettes"
+    ],
+    "liens": [
+      { "titre": "INRS - Nettoyage", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Carrossier",
+    "risques": [
+      "Isocyanates",
+      "Solvants",
+      "Poussières ponçage"
+    ],
+    "actions": [
+      "Cabine peinture",
+      "Masque filtrant",
+      "Aspirations locales"
+    ],
+    "liens": [
+      { "titre": "INRS - Carrosserie", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Laborantin chimie",
+    "risques": [
+      "Solvants CMR",
+      "Acides volatils",
+      "Aldéhydes"
+    ],
+    "actions": [
+      "Hotte aspirante",
+      "Substitution produits CMR",
+      "Formation chimique"
+    ],
+    "liens": [
+      { "titre": "INRS - Laboratoire", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+
