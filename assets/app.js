@@ -93,7 +93,32 @@ function afficherFiche(m) {
         else {
             bloc.textContent = l.titre;
         }
+/* ============================
+   BARRE DE RECHERCHE METIERS
+   ============================ */
 
+const searchInput = document.getElementById("search");
+const metierSelect = document.getElementById("metier");
+
+// Fonction pour filtrer la liste des métiers
+searchInput.addEventListener("keyup", () => {
+    const filter = searchInput.value.toLowerCase();
+
+    // On parcourt toutes les options de la liste déroulante
+    for (let i = 0; i < metierSelect.options.length; i++) {
+        const option = metierSelect.options[i];
+        const txt = option.textContent.toLowerCase();
+
+        if (txt.includes(filter)) {
+            option.style.display = "";
+        } else {
+            option.style.display = "none";
+        }
+    }
+
+    // Si l’utilisateur sélectionne via la saisie → on efface le métier affiché
+    document.getElementById("result").style.display = "none";
+});
         liens.appendChild(bloc);
     });
 }
