@@ -1,1 +1,166 @@
+[
+  {
+    "metier": "Coiffeur / Coiffeuse",
+    "risques": [
+      "Colorants oxydants classés irritants",
+      "Persulfates respiratoires (asthme professionnel)",
+      "Aérosols irritants",
+      "Allergènes parfumés"
+    ],
+    "actions": [
+      "Port de gants nitrile homologués EN374",
+      "Ventilation 25 m³/h/personne",
+      "Substitution des poudres par des pâtes pour limiter les aérosols",
+      "Stockage des produits en armoire ventilée",
+      "Affichage et consultation des FDS"
+    ],
+    "liens": [
+      { "titre": "INRS – Coiffure", "url": "https://www.inrs.fr/risques/coiffure.html" }
+    ]
+  },
+
+  {
+    "metier": "Barbier",
+    "risques": [
+      "Sprays parfumés",
+      "Alcools et lotions",
+      "Aérosols irritants"
+    ],
+    "actions": [
+      "Ventilation naturelle ou mécanique",
+      "Utilisation de produits hypoallergéniques",
+      "Port de gants lors d'applications irritantes"
+    ],
+    "liens": [
+      { "titre": "INRS – Cosmétiques", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Esthéticienne",
+    "risques": [
+      "Solvants dissolvants (acétone)",
+      "Résines UV",
+      "Aérosols parfumés"
+    ],
+    "actions": [
+      "Port de gants nitrile fins",
+      "Ventilation locale au poste",
+      "Substitution par des produits non CMR"
+    ],
+    "liens": [
+      { "titre": "INRS – Bien-être", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Boulanger",
+    "risques": [
+      "Dégraissants alcalins",
+      "Désinfectants chlorés",
+      "Aérosols irritants"
+    ],
+    "actions": [
+      "Dilution sécurisée (eau puis produit)",
+      "Gants de protection chimique",
+      "Ventilation du fournil",
+      "Nettoyage hors présence du personnel"
+    ],
+    "liens": [
+      { "titre": "INRS – Boulangerie", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Pâtissier",
+    "risques": [
+      "Solvants alimentaires",
+      "Dégraissants puissants",
+      "Produits désinfectants"
+    ],
+    "actions": [
+      "Port de lunettes anti-projection",
+      "Gants nitrile",
+      "Aération après nettoyage"
+    ],
+    "liens": [
+      { "titre": "INRS – Agroalimentaire", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Cuisinier",
+    "risques": [
+      "Dégraissants cuisine",
+      "Décapants four",
+      "Vapeurs irritantes"
+    ],
+    "actions": [
+      "Port de gants et lunettes",
+      "Utiliser des produits en dilution faible",
+      "Ventiler pendant l’usage"
+    ],
+    "liens": [
+      { "titre": "INRS – Restauration", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Serveur",
+    "risques": [
+      "Aérosols désinfectants",
+      "Nettoyants surfaces irritants"
+    ],
+    "actions": [
+      "Ventilation du restaurant",
+      "Port de gants jetables si manipulation",
+      "Minimiser l’utilisation d’aérosols"
+    ],
+    "liens": [
+      { "titre": "INRS – CHR", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Agent d'entretien",
+    "risques": [
+      "Javel et dérivés chlorés",
+      "Dégraissants alcalins",
+      "Acides détartrants",
+      "Ammoniums quaternaires"
+    ],
+    "actions": [
+      "Gants, lunettes, tablier",
+      "Ne jamais mélanger Javel + acide",
+      "Dilution sécurisée (ajouter produit à l'eau)",
+      "Ventilation immédiate"
+    ],
+    "liens": [
+      { "titre": "INRS – Nettoyage", "url": "https://www.inrs.fr/risques/nettoyage.html" }
+    ]
+  },
+
+  {
+    "metier": "Agent de désinfection",
+    "risques": [
+      "Biocides CMR",
+      "Peroxydes concentrés",
+      "Chlore"
+    ],
+    "actions": [
+      "Masque A2P3",
+      "Combinaison jetable type 4/5",
+      "Ventilation et interdiction d'accès après application",
+      "Traçabilité des produits utilisés"
+    ],
+    "liens": [
+      { "titre": "INRS – Biocides", "url": "https://www.inrs.fr" }
+    ]
+  },
+
+  {
+    "metier": "Blanchisseur industriel",
+    "risques": [
+      "Hypochlorite",
+      "Détachants solvants",
 
