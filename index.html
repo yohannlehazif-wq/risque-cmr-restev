@@ -22,10 +22,15 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111;font-f
 <button class="help" id="helpBtn">AIDE</button>
 <button class="reset" id="resetBtn">RECOMMENCER</button>
 </div>
-<div class="mobileHelp">PC : clic + souris, ZQSD/WASD · Casque : viser puis gâchette</div>
+<div class="mobileHelp" id="loadState">Chargement des modèles 3D…</div>
 
 <a-scene id="scene" renderer="antialias:true; colorManagement:true; physicallyCorrectLights:true" shadow="type:pcfsoft" webxr="optionalFeatures: local-floor, bounded-floor, hand-tracking" xr-mode-ui="enabled:true">
 <a-assets>
+  <!-- Modèles 3D CC0 chargés depuis des CDN publics -->
+  <a-asset-item id="forkliftGLB" src="https://assets.stoicsoft.com/1designtool/3d/models/warehouse-and-logistics-forklift/e3b6b7a023/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="rackGLB" src="https://cdn.3dassets.dev/assets/26383/v1/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="palletGLB" src="https://assets.stoicsoft.com/1designtool/3d/models/warehouse-and-logistics-pallets/f30830b0b5/model.glb" crossorigin="anonymous"></a-asset-item>
+
   <a-mixin id="steel" material="color:#49535a; metalness:.55; roughness:.55"></a-mixin>
   <a-mixin id="orange" material="color:#a75a24; metalness:.18; roughness:.75"></a-mixin>
   <a-mixin id="cardboard" material="color:#ae7642; roughness:.92"></a-mixin>
@@ -55,18 +60,20 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111;font-f
 
 <!-- rayonnages -->
 <a-entity id="racks"></a-entity>
+<!-- baies de rayonnage GLB CC0, dimensions réelles -->
+<a-entity gltf-model="#rackGLB" position="-10 0 -8" rotation="0 90 0" shadow="cast:true;receive:true"></a-entity>
+<a-entity gltf-model="#rackGLB" position="-10 0 -1" rotation="0 90 0" shadow="cast:true;receive:true"></a-entity>
+<a-entity gltf-model="#rackGLB" position="-10 0 6" rotation="0 90 0" shadow="cast:true;receive:true"></a-entity>
+<a-entity gltf-model="#rackGLB" position="10 0 -8" rotation="0 -90 0" shadow="cast:true;receive:true"></a-entity>
+<a-entity gltf-model="#rackGLB" position="10 0 -1" rotation="0 -90 0" shadow="cast:true;receive:true"></a-entity>
+<a-entity gltf-model="#rackGLB" position="10 0 6" rotation="0 -90 0" shadow="cast:true;receive:true"></a-entity>
 
-<!-- chariot élévateur -->
-<a-entity id="forklift" position="-2.8 0 -2.2" rotation="0 22 0" shadow="cast:true">
- <a-box position="0 1 0" width="2.4" height="1.45" depth="1.55" color="#b7742b"></a-box>
- <a-box position="-.48 2.25 0" width="1.15" height="1.5" depth="1.42" color="#222a2e"></a-box>
- <a-box position="-.48 2.3 .02" width=".95" height="1.15" depth="1.46" color="#7293a1" opacity=".5"></a-box>
- <a-cylinder rotation="90 0 0" position="-.75 .43 .84" radius=".43" height=".3" color="#17191b"></a-cylinder>
- <a-cylinder rotation="90 0 0" position=".78 .43 .84" radius=".43" height=".3" color="#17191b"></a-cylinder>
- <a-box position="1.38 1.25 0" width=".18" height="3.2" depth="1.5" color="#272d30"></a-box>
- <a-box position="2.35 .18 .44" width="2.1" height=".12" depth=".16" color="#24282a"></a-box>
- <a-box position="2.35 .18 -.44" width="2.1" height=".12" depth=".16" color="#24282a"></a-box>
-</a-entity>
+<!-- chariot élévateur réaliste GLB -->
+<a-entity id="forklift" gltf-model="#forkliftGLB" position="-2.8 0 -2.2" rotation="0 22 0" scale="1 1 1" shadow="cast:true;receive:true"></a-entity>
+
+<!-- palettes et colis GLB -->
+<a-entity gltf-model="#palletGLB" position="4.5 0 -8" rotation="0 -20 0" shadow="cast:true;receive:true"></a-entity>
+<a-entity gltf-model="#palletGLB" position="-5.5 0 -11" rotation="0 30 0" shadow="cast:true;receive:true"></a-entity>
 
 <!-- personne stylisée -->
 <a-entity position="1 .0 -2.5">
@@ -143,7 +150,7 @@ const riskData=[
 ];
 let found=new Set(); const hazards=document.querySelector('#hazards');
 function makeRack(x,z,rot=0){const e=document.createElement('a-entity');e.setAttribute('position',`${x} 0 ${z}`);e.setAttribute('rotation',`0 ${rot} 0`);for(const px of [-2.25,0,2.25]){const p=document.createElement('a-box');p.setAttribute('position',`${px} 2.4 0`);p.setAttribute('width','.18');p.setAttribute('height','4.8');p.setAttribute('depth','1.65');p.setAttribute('mixin','steel');e.appendChild(p)}for(const y of [.65,2,3.35,4.7]){const b=document.createElement('a-box');b.setAttribute('position',`0 ${y} 0`);b.setAttribute('width','4.7');b.setAttribute('height','.13');b.setAttribute('depth','1.65');b.setAttribute('mixin','orange');e.appendChild(b)}for(const d of [[-1.2,1.28],[1.15,2.62],[-1.1,3.98],[1.05,3.98]]){const c=document.createElement('a-box');c.setAttribute('position',`${d[0]} ${d[1]} 0`);c.setAttribute('width','1.7');c.setAttribute('height','1.05');c.setAttribute('depth','1.4');c.setAttribute('mixin','cardboard');e.appendChild(c)}document.querySelector('#racks').appendChild(e)}
-makeRack(-10,-8);makeRack(-10,0);makeRack(10,-7);makeRack(10,1);makeRack(-10,11);makeRack(10,11);
+// Les rayonnages principaux sont désormais des modèles GLB réalistes.
 function pulse(h){h.setAttribute('animation','property:scale;dir:alternate;dur:620;loop:true;to:1.28 1.28 1.28')}
 riskData.forEach((r,i)=>{const group=document.createElement('a-entity');group.setAttribute('position',r.pos);const orb=document.createElement('a-sphere');orb.setAttribute('radius','.28');orb.setAttribute('color','#ff3025');orb.setAttribute('material','emissive:#ff2418;emissiveIntensity:1.7');orb.setAttribute('class','clickable hazard');orb.dataset.index=i;pulse(orb);const ring=document.createElement('a-torus');ring.setAttribute('radius','.55');ring.setAttribute('radius-tubular','.025');ring.setAttribute('color','#ff7d6f');ring.setAttribute('rotation','90 0 0');ring.setAttribute('animation','property:rotation;to:90 360 0;dur:1600;loop:true;easing:linear');group.append(orb,ring);hazards.appendChild(group);orb.addEventListener('click',()=>detect(i,orb,ring))});
 function detect(i,orb,ring){if(found.has(i))return;found.add(i);orb.setAttribute('color','#24c873');orb.setAttribute('material','emissive:#24c873;emissiveIntensity:1.2');orb.removeAttribute('animation');ring.setAttribute('color','#24c873');document.querySelector('#score').textContent=`${found.size} / ${riskData.length}`;document.querySelector('#last').textContent='Danger détecté : '+riskData[i].name;showPanel(riskData[i]);[document.querySelector('#leftHand'),document.querySelector('#rightHand')].forEach(h=>{const c=h.components['tracked-controls'];if(c&&c.controller&&c.controller.gamepad&&c.controller.gamepad.hapticActuators?.[0])c.controller.gamepad.hapticActuators[0].pulse(.55,120)});if(found.size===riskData.length){document.querySelector('#mission').textContent='Mission terminée. Les 8 dangers ont été identifiés.'}}
@@ -152,6 +159,12 @@ document.querySelector('#closePanel').addEventListener('click',()=>document.quer
 document.querySelector('#enterVr').onclick=()=>document.querySelector('#scene').enterVR();
 document.querySelector('#resetBtn').onclick=()=>location.reload();
 document.querySelector('#helpBtn').onclick=()=>alert('Ordinateur : cliquez dans la scène, regardez avec la souris et déplacez-vous avec ZQSD/WASD. Casque : cliquez sur ENTRER EN VR, pointez une balise rouge avec un contrôleur et pressez la gâchette.');
+
+const assetsEl=document.querySelector('a-assets');
+assetsEl.addEventListener('loaded',()=>{document.querySelector('#loadState').textContent='PC : clic + souris, ZQSD/WASD · Casque : viser puis gâchette';});
+setTimeout(()=>{if(!assetsEl.hasLoaded)document.querySelector('#loadState').textContent='Chargement lent : vérifiez la connexion Internet et les CDN 3D.';},12000);
+document.querySelectorAll('[gltf-model]').forEach(el=>el.addEventListener('model-error',e=>{document.querySelector('#loadState').textContent='Un modèle 3D externe n’a pas chargé. Rechargez la page ou testez un autre réseau.';}));
+
 function resize(){const s=document.querySelector('#scene');if(s.renderer){s.resize();s.renderer.setSize(innerWidth,innerHeight,false)}}
 addEventListener('load',()=>setTimeout(resize,300));addEventListener('resize',resize);new ResizeObserver(()=>resize()).observe(document.body);
 </script>
