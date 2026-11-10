@@ -1,60 +1,24 @@
-Voici une version nettement améliorée et hautement immersive de votre application de sensibilisation aux risques professionnels (SST / Chasse aux risques) en VR.
-
-### Nouveautés et Améliorations Apportées :
-
-1. **Ambiance Sonore & Audio Spatialisé** :
-* Ajout d'un système audio spatialisé Web Audio (sirènes d'avertissement, bruits de moteur d'engin de manutention, gouttes d'eau/fuite, déclenchement sonore lors de la validation d'un danger).
-
-
-2. **Effets Visuels Immersifs** :
-* Éclairage d'urgence tournant (gyrophare), textures de signalisation (rayures jaunes et noires), fumée/vapeur au sol et étincelles au niveau du matériel défectueux.
-
-
-3. **Module de Débriefing / Feedback Pédagogique** :
-* Panneau 3D contextuel qui s'affiche en VR à chaque danger repéré pour expliquer **la nature du risque** et **la mesure de prévention à adopter** (ex: règle des 3 points pour l'échelle, stockage des produits chimiques, balisage coactivité).
-
-
-4. **Interactions VR Enrichies** :
-* Les repères de danger s'animent en 3D avec des étiquettes flottantes réactives au regard/pointeur laser.
-* Intégration de contrôleurs VR (mains droite/gauche) avec faisceau laser dynamique et prise en charge intégrée du *fuse-click* (regard prolongé) ou du clic sur contrôleur.
-
-
-
-```html
 <!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>RESTEV 85 - Chasse aux Risques VR Immersive</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>RESTEV 85 - Chasse aux Risques VR Texturée</title>
   <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
   <style>
-    body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; background: #000; }
+    body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; background: #050b14; }
     .hud {
-      position: fixed;
-      z-index: 10;
-      top: 16px;
-      left: 16px;
-      background: rgba(16, 44, 61, 0.9);
-      color: white;
-      padding: 16px 20px;
-      border-radius: 12px;
-      max-width: 360px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.1);
+      position: fixed; z-index: 10; top: 16px; left: 16px;
+      background: rgba(16, 44, 61, 0.92); color: white; padding: 16px 20px;
+      border-radius: 12px; max-width: 360px; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);
     }
-    .hud h2 { margin: 0 0 8px 0; font-size: 1.1rem; color: #53d1c9; text-transform: uppercase; letter-spacing: 1px; }
-    .hud .stats { font-size: 1rem; margin-bottom: 12px; }
+    .hud h2 { margin: 0 0 6px 0; font-size: 1.1rem; color: #53d1c9; text-transform: uppercase; letter-spacing: 1px; }
+    .hud .stats { font-size: 1rem; margin-bottom: 10px; }
     .hud b { color: #53d1c9; }
     .hud button {
-      border: 0;
-      border-radius: 8px;
-      padding: 10px 14px;
-      font-weight: 700;
-      cursor: pointer;
-      margin: 4px 6px 0 0;
-      transition: all 0.2s ease;
+      border: 0; border-radius: 8px; padding: 10px 14px; font-weight: 700;
+      cursor: pointer; margin: 4px 6px 0 0; transition: all 0.2s ease;
     }
     .mag { background: #a71974; color: white; }
     .mag:hover { background: #c4238b; }
@@ -62,7 +26,7 @@ Voici une version nettement améliorée et hautement immersive de votre applicat
     .teal:hover { background: #2ab0b2; }
     .a-enter-vr-button { background: #a71974 !important; border-radius: 10px !important; }
     .notice { font-size: 11px; opacity: 0.8; margin-top: 10px; line-height: 1.3; }
-    #feedback-text { color: #ffd166; font-weight: 600; min-height: 2.4em; }
+    #feedback-text { color: #ffd166; font-weight: 600; min-height: 2.6em; font-size: 0.95em; }
   </style>
 </head>
 <body>
@@ -70,162 +34,158 @@ Voici une version nettement améliorée et hautement immersive de votre applicat
   <div class="hud">
     <h2>RESTEV 85 · SST VR</h2>
     <div class="stats">Dangers identifiés : <b id="score">0</b> / <span id="total">8</span></div>
-    <div id="feedback-text">Inspectez l'entrepôt et pointez les zones d'inconformité.</div>
-    <div style="margin-top:12px;">
+    <div id="feedback-text">Inspectez l'entrepôt texturé et pointez les anomalies.</div>
+    <div style="margin-top:10px;">
       <button class="teal" onclick="document.querySelector('a-scene').enterVR()">MODE VR</button>
       <button class="mag" onclick="location.reload()">RÉINITIALISER</button>
     </div>
-    <div class="notice">💡 En casque WebXR : utilisez les gâchettes ou le regard fixe (fuse) pour valider un danger.</div>
+    <div class="notice">💡 Casque WebXR / Navigateur : pointez le cercle blanc sur un danger pour l'analyser.</div>
   </div>
 
-  <a-scene renderer="antialias: true; colorManagement: true; highRefreshRate: true" 
+  <a-scene renderer="antialias: true; colorManagement: true; highRefreshRate: true; sortObjects: true" 
            webxr="optionalFeatures: local-floor, bounded-floor" 
            xr-mode-ui="enabled: true" 
-           background="color: #0d1b2a" 
+           background="color: #0b131e" 
            shadow="type: pcfsoft">
     
     <a-assets>
-      <a-mixin id="rack-post" geometry="primitive: box; width: 0.16; height: 3.8; depth: 1.2" material="color: #2c3e50; metalness: 0.6; roughness: 0.3"></a-mixin>
-      <a-mixin id="beam" geometry="primitive: box; width: 4.2; height: 0.14; depth: 1.2" material="color: #e67e22; metalness: 0.4; roughness: 0.4"></a-mixin>
-      <a-mixin id="hazard-marker" geometry="primitive: sphere; radius: 0.25" material="color: #e74c3c; emissive: #c0392b; emissiveIntensity: 0.6; wireframe: false"></a-mixin>
+      <!-- Textures industrielles PBR haute définition -->
+      <img id="tex-concrete" src="https://images.unsplash.com/photo-1518640467707-6811f4a8ab73?q=80&w=1024&auto=format&fit=crop">
+      <img id="tex-metal" src="https://images.unsplash.com/photo-1558486012-817176f84c6d?q=80&w=1024&auto=format&fit=crop">
+      <img id="tex-wood" src="https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?q=80&w=1024&auto=format&fit=crop">
+      <img id="tex-cardboard" src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?q=80&w=1024&auto=format&fit=crop">
+      <img id="tex-wall" src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?q=80&w=1024&auto=format&fit=crop">
+      <img id="tex-hazard" src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=512&auto=format&fit=crop">
+
+      <a-mixin id="rack-post" geometry="primitive: box; width: 0.16; height: 3.8; depth: 1.2" material="src: #tex-metal; roughness: 0.3; metalness: 0.8; repeat: 1 4"></a-mixin>
+      <a-mixin id="beam" geometry="primitive: box; width: 4.2; height: 0.14; depth: 1.2" material="color: #e67e22; roughness: 0.4; metalness: 0.5"></a-mixin>
     </a-assets>
 
-    <!-- Éclairage spatial & ambiance -->
-    <a-entity light="type: ambient; intensity: 0.45; color: #a9cce3"></a-entity>
-    <a-entity light="type: directional; intensity: 0.85; castShadow: true; shadowMapWidth: 2048; shadowMapHeight: 2048" position="5 12 4"></a-entity>
+    <!-- Éclairage professionnel d'entrepôt -->
+    <a-entity light="type: ambient; intensity: 0.6; color: #d8e2dc"></a-entity>
+    <a-entity light="type: directional; intensity: 0.9; castShadow: true; shadowMapWidth: 2048; shadowMapHeight: 2048" position="6 14 5"></a-entity>
 
-    <!-- Gyrophare de sécurité -->
+    <!-- Gyrophare de sécurité actif -->
     <a-entity position="0 5.8 0">
-      <a-cylinder radius="0.2" height="0.4" color="#333"></a-cylinder>
-      <a-sphere radius="0.18" position="0 0.2 0" material="color: #ff3300; emissive: #ff3300; emissiveIntensity: 1; transparent: true; opacity: 0.8"></a-sphere>
-      <a-entity light="type: spot; color: #ff2200; intensity: 3; angle: 45; penumbra: 0.5; castShadow: false" 
+      <a-cylinder radius="0.2" height="0.4" material="src: #tex-metal"></a-cylinder>
+      <a-sphere radius="0.18" position="0 0.2 0" material="color: #ff3300; emissive: #ff3300; emissiveIntensity: 1; transparent: true; opacity: 0.85"></a-sphere>
+      <a-entity light="type: spot; color: #ff2200; intensity: 3.5; angle: 50; penumbra: 0.5" 
                 animation="property: rotation; to: 0 360 0; dur: 2000; easing: linear; loop: true"></a-entity>
     </a-entity>
 
-    <!-- Structure de l'entrepôt (Sol, murs, toit) -->
-    <a-plane rotation="-90 0 0" width="32" height="36" color="#4a5568" shadow="receive: true" material="roughness: 0.8; metalness: 0.1"></a-plane>
-    <a-plane position="0 6 -18" width="32" height="12" color="#2d3748"></a-plane>
-    <a-plane position="-16 6 0" rotation="0 90 0" width="36" height="12" color="#2d3748"></a-plane>
-    <a-plane position="16 6 0" rotation="0 -90 0" width="36" height="12" color="#2d3748"></a-plane>
+    <!-- Sol de l'entrepôt en béton texturé -->
+    <a-plane rotation="-90 0 0" width="34" height="38" material="src: #tex-concrete; repeat: 8 8; roughness: 0.6" shadow="receive: true"></a-plane>
+    <!-- Murs texturés -->
+    <a-plane position="0 6 -19" width="34" height="12" material="src: #tex-wall; repeat: 4 2; roughness: 0.8"></a-plane>
+    <a-plane position="-17 6 0" rotation="0 90 0" width="38" height="12" material="src: #tex-wall; repeat: 4 2; roughness: 0.8"></a-plane>
+    <a-plane position="17 6 0" rotation="0 -90 0" width="38" height="12" material="src: #tex-wall; repeat: 4 2; roughness: 0.8"></a-plane>
     
-    <!-- Marquages au sol (Voies de circulation) -->
-    <a-plane rotation="-90 0 0" position="0 0.01 0" width="3" height="34" color="#f1c40f"></a-plane>
-    <a-plane rotation="-90 0 0" position="0 0.015 0" width="2.6" height="34" color="#4a5568"></a-plane>
+    <!-- Voies de circulation avec bandes de signalisation -->
+    <a-plane rotation="-90 0 0" position="0 0.012 0" width="3.2" height="36" material="src: #tex-hazard; repeat: 1 18"></a-plane>
+    <a-plane rotation="-90 0 0" position="0 0.018 0" width="2.6" height="36" material="src: #tex-concrete; repeat: 2 16"></a-plane>
     
-    <!-- Rayonnage 1 (Gauche) - Danger : Stockage Instable -->
-    <a-entity position="-6 0 -4">
+    <!-- Rayonnage 1 (Gauche) - Stockage instable -->
+    <a-entity position="-6.5 0 -4">
       <a-box mixin="rack-post" position="-2 1.9 0"></a-box>
       <a-box mixin="rack-post" position="2 1.9 0"></a-box>
       <a-box mixin="beam" position="0 0.8 0"></a-box>
       <a-box mixin="beam" position="0 2.1 0"></a-box>
       <a-box mixin="beam" position="0 3.3 0"></a-box>
-      <a-box position="-1 0.4 0" width="1.6" height="0.7" depth="1" color="#d35400" shadow></a-box>
-      <!-- Cartons déséquilibrés -->
-      <a-entity position="1 2.6 0" rotation="0 0 18">
-        <a-box width="1.6" height="0.8" depth="0.9" color="#e67e22" shadow></a-box>
-        <a-box position="0.2 0.7 0" rotation="0 15 8" width="1.2" height="0.6" depth="0.8" color="#d35400" shadow></a-box>
+      <a-box position="-1 0.4 0" width="1.6" height="0.7" depth="1" material="src: #tex-cardboard; roughness: 0.7" shadow></a-box>
+      <!-- Cartons déséquilibrés en hauteur -->
+      <a-entity position="1 2.6 0" rotation="0 0 16">
+        <a-box width="1.6" height="0.8" depth="0.9" material="src: #tex-cardboard; roughness: 0.7" shadow></a-box>
+        <a-box position="0.2 0.7 0" rotation="0 20 10" width="1.2" height="0.6" depth="0.8" material="src: #tex-cardboard; roughness: 0.7" shadow></a-box>
       </a-entity>
     </a-entity>
 
     <!-- Rayonnage 2 (Droite) -->
-    <a-entity position="6 0 -6">
+    <a-entity position="6.5 0 -6">
       <a-box mixin="rack-post" position="-2 1.9 0"></a-box>
       <a-box mixin="rack-post" position="2 1.9 0"></a-box>
       <a-box mixin="beam" position="0 0.8 0"></a-box>
       <a-box mixin="beam" position="0 2.1 0"></a-box>
-      <a-box position="0 1.3 0" width="1.8" height="0.9" depth="1" color="#d35400" shadow></a-box>
+      <a-box position="0 1.3 0" width="1.8" height="0.9" depth="1" material="src: #tex-cardboard; roughness: 0.7" shadow></a-box>
     </a-entity>
 
-    <!-- Chariot Élévateur & Piéton (Danger : Coactivité) -->
+    <!-- Chariot Élévateur & Piéton (Coactivité) -->
     <a-entity position="2.5 0 -2" rotation="0 -35 0">
-      <!-- Corps du chariot -->
-      <a-box position="0 0.7 0" width="2" height="1.1" depth="1.3" color="#f39c12" shadow></a-box>
-      <a-box position="-0.3 1.8 0" width="1" height="1.4" depth="1.2" color="#34495e" opacity="0.85"></a-box>
-      <!-- Roues -->
+      <a-box position="0 0.7 0" width="2" height="1.1" depth="1.3" color="#f39c12" material="roughness: 0.3; metalness: 0.5" shadow></a-box>
+      <a-box position="-0.3 1.8 0" width="1" height="1.4" depth="1.2" material="src: #tex-metal; opacity: 0.9"></a-box>
       <a-cylinder rotation="90 0 0" position="-0.6 0.3 0.7" radius="0.3" height="0.2" color="#111"></a-cylinder>
       <a-cylinder rotation="90 0 0" position="0.6 0.3 0.7" radius="0.3" height="0.2" color="#111"></a-cylinder>
       <a-cylinder rotation="90 0 0" position="-0.6 0.3 -0.7" radius="0.3" height="0.2" color="#111"></a-cylinder>
       <a-cylinder rotation="90 0 0" position="0.6 0.3 -0.7" radius="0.3" height="0.2" color="#111"></a-cylinder>
-      <!-- Mât et Fourches -->
-      <a-box position="1.2 1.2 0" width="0.12" height="2.2" depth="1.1" color="#2c3e50"></a-box>
-      <a-box position="1.8 0.15 0.3" width="1.4" height="0.08" depth="0.12" color="#7f8c8d"></a-box>
-      <a-box position="1.8 0.15 -0.3" width="1.4" height="0.08" depth="0.12" color="#7f8c8d"></a-box>
+      <a-box position="1.2 1.2 0" width="0.12" height="2.2" depth="1.1" material="src: #tex-metal"></a-box>
+      <a-box position="1.8 0.15 0.3" width="1.4" height="0.08" depth="0.12" material="src: #tex-metal"></a-box>
+      <a-box position="1.8 0.15 -0.3" width="1.4" height="0.08" depth="0.12" material="src: #tex-metal"></a-box>
     </a-entity>
 
-    <!-- Piéton à proximité immédiate -->
+    <!-- Piéton -->
     <a-entity position="0.8 0 -3">
-      <a-cylinder position="0 0.9 0" height="1.3" radius="0.25" color="#2980b9"></a-cylinder>
-      <a-sphere position="0 1.7 0" radius="0.22" color="#f1c40f"></a-sphere> <!-- Casque jaune -->
+      <a-cylinder position="0 0.9 0" height="1.3" radius="0.25" color="#2980b9" material="roughness: 0.5"></a-cylinder>
+      <a-sphere position="0 1.7 0" radius="0.22" color="#f1c40f" material="roughness: 0.3"></a-sphere>
     </a-entity>
 
-    <!-- Palette encombrant l'allée centrale -->
+    <!-- Palette dans l'allée -->
     <a-entity position="0 0 -7">
-      <a-box position="0 0.1 0" width="1.8" height="0.18" depth="1.2" color="#8e5123"></a-box>
-      <a-box position="0 0.5 0" width="1.5" height="0.7" depth="1" color="#d35400" shadow></a-box>
+      <a-box position="0 0.1 0" width="1.8" height="0.18" depth="1.2" material="src: #tex-wood; roughness: 0.9"></a-box>
+      <a-box position="0 0.5 0" width="1.5" height="0.7" depth="1" material="src: #tex-cardboard; roughness: 0.7" shadow></a-box>
     </a-entity>
 
-    <!-- Liquide / Flaque au sol (Danger : Glissade) -->
-    <a-circle rotation="-90 0 0" position="-2.5 0.02 1" radius="1.2" material="color: #3498db; opacity: 0.85; roughness: 0.1"></a-circle>
-    <!-- Goutte d'eau animée -->
-    <a-sphere position="-2.5 3 1" radius="0.05" color="#3498db" 
-              animation="property: position; to: -2.5 0.05 1; dur: 1200; loop: true; easing: easeInQuad"></a-sphere>
+    <!-- Flaque / Liquide au sol -->
+    <a-circle rotation="-90 0 0" position="-2.5 0.02 1" radius="1.3" material="color: #2980b9; opacity: 0.85; roughness: 0.1; metalness: 0.2"></a-circle>
+    <a-sphere position="-2.5 3.2 1" radius="0.05" color="#3498db" 
+              animation="property: position; to: -2.5 0.04 1; dur: 1100; loop: true; easing: easeInQuad"></a-sphere>
 
     <!-- Issue de secours encombrée -->
     <a-entity position="12 0 -13">
-      <a-box position="0 1.6 0" width="0.1" height="3" depth="2.2" color="#27ae60"></a-box>
+      <a-box position="0 1.6 0" width="0.1" height="3" depth="2.2" color="#27ae60" material="roughness: 0.4"></a-box>
       <a-text value="SORTIE DE SECOURS" rotation="0 -90 0" position="-0.1 3.3 0" align="center" color="#2ecc71" width="6"></a-text>
-      <!-- Obstacle devant la porte -->
-      <a-box position="-0.8 0.5 0" width="1.4" height="1" depth="1.4" color="#7f8c8d" shadow></a-box>
+      <a-box position="-0.8 0.5 0" width="1.4" height="1" depth="1.4" material="src: #tex-cardboard; roughness: 0.7" shadow></a-box>
     </a-entity>
 
-    <!-- Câble électrique qui traîne -->
-    <a-torus position="-1.5 0.05 4" rotation="90 45 0" radius="1.5" radius-tubular="0.035" arc="200" color="#111"></a-torus>
+    <!-- Câble au sol -->
+    <a-torus position="-1.5 0.05 4" rotation="90 45 0" radius="1.5" radius-tubular="0.035" arc="200" color="#1a1a1a" material="roughness: 0.9"></a-torus>
 
-    <!-- Échelle mal positionnée (Mauvais angle + non attachée) -->
+    <!-- Échelle mal positionnée -->
     <a-entity position="-11 0 -6" rotation="0 15 -25">
-      <a-box position="-0.4 2 0" width="0.08" height="4.2" depth="0.08" color="#bdc3c7"></a-box>
-      <a-box position="0.4 2 0" width="0.08" height="4.2" depth="0.08" color="#bdc3c7"></a-box>
-      <a-box position="0 0.6 0" width="0.8" height="0.06" depth="0.06" color="#bdc3c7"></a-box>
-      <a-box position="0 1.3 0" width="0.8" height="0.06" depth="0.06" color="#bdc3c7"></a-box>
-      <a-box position="0 2.0 0" width="0.8" height="0.06" depth="0.06" color="#bdc3c7"></a-box>
-      <a-box position="0 2.7 0" width="0.8" height="0.06" depth="0.06" color="#bdc3c7"></a-box>
-      <a-box position="0 3.4 0" width="0.8" height="0.06" depth="0.06" color="#bdc3c7"></a-box>
+      <a-box position="-0.4 2 0" width="0.08" height="4.2" depth="0.08" material="src: #tex-metal"></a-box>
+      <a-box position="0.4 2 0" width="0.08" height="4.2" depth="0.08" material="src: #tex-metal"></a-box>
+      <a-box position="0 0.6 0" width="0.8" height="0.06" depth="0.06" material="src: #tex-metal"></a-box>
+      <a-box position="0 1.3 0" width="0.8" height="0.06" depth="0.06" material="src: #tex-metal"></a-box>
+      <a-box position="0 2.0 0" width="0.8" height="0.06" depth="0.06" material="src: #tex-metal"></a-box>
+      <a-box position="0 2.7 0" width="0.8" height="0.06" depth="0.06" material="src: #tex-metal"></a-box>
+      <a-box position="0 3.4 0" width="0.8" height="0.06" depth="0.06" material="src: #tex-metal"></a-box>
     </a-entity>
 
-    <!-- Machine industrielle sans carter de protection -->
+    <!-- Machine sans carter -->
     <a-entity position="-6 0 6">
-      <a-box position="0 1 0" width="2.5" height="2" depth="1.8" color="#34495e"></a-box>
-      <!-- Engrenage apparent dangereux -->
-      <a-cylinder position="0 1.2 0.95" rotation="90 0 0" radius="0.6" height="0.1" color="#e74c3c"
+      <a-box position="0 1 0" width="2.5" height="2" depth="1.8" material="src: #tex-metal; roughness: 0.4"></a-box>
+      <a-cylinder position="0 1.2 0.95" rotation="90 0 0" radius="0.6" height="0.1" material="src: #tex-metal; color: #c0392b"
                   animation="property: rotation; to: 90 360 0; dur: 3000; easing: linear; loop: true"></a-cylinder>
     </a-entity>
 
-    <!-- Panneau VR Synthèse / Feedback Pédagogique 3D -->
+    <!-- Panneau 3D de Feedback Pédagogique -->
     <a-entity id="vr-panel" position="0 2.2 7" rotation="0 180 0" visible="false">
-      <a-plane width="3.5" height="1.8" color="#102c3d" material="opacity: 0.9; transparent: true"></a-plane>
-      <a-text id="vr-panel-title" value="DANGER DÉTECTÉ" align="center" position="0 0.6 0.02" color="#53d1c9" width="4.5" font="roboto"></a-text>
-      <a-text id="vr-panel-desc" value="Explication du risque..." align="center" position="0 0.1 0.02" color="#ffffff" width="3" wrap-count="35"></a-text>
-      <a-text id="vr-panel-action" value="Action corrective recommandée" align="center" position="0 -0.4 0.02" color="#f1c40f" width="2.8" wrap-count="40"></a-text>
+      <a-plane width="3.6" height="1.8" color="#102c3d" material="opacity: 0.92; transparent: true"></a-plane>
+      <a-text id="vr-panel-title" value="DANGER DÉTECTÉ" align="center" position="0 0.6 0.02" color="#53d1c9" width="4.5"></a-text>
+      <a-text id="vr-panel-desc" value="Analyse du risque..." align="center" position="0 0.1 0.02" color="#ffffff" width="3" wrap-count="35"></a-text>
+      <a-text id="vr-panel-action" value="Action corrective" align="center" position="0 -0.4 0.02" color="#f1c40f" width="2.8" wrap-count="40"></a-text>
     </a-entity>
 
-    <!-- Emplacements des Dangers (Sphères cliquables) -->
+    <!-- Groupe des repères cliquables -->
     <a-entity id="hazards-group"></a-entity>
 
-    <!-- RIG JOUEUR & CONTRÔLEURS VR -->
+    <!-- Caméra & Contrôleurs VR -->
     <a-entity id="rig" position="0 0 9">
       <a-camera id="camera" look-controls wasd-controls="acceleration: 30" position="0 1.65 0">
-        <!-- Réticule avec effet FUSE (clic automatique au regard après 1.5s) -->
         <a-cursor raycaster="objects: .hazard-clickable" 
-                  fuse="true" 
-                  fuse-timeout="1200"
-                  color="#ffffff"
-                  scale="1 1 1"
+                  fuse="true" fuse-timeout="1100" color="#ffffff"
                   animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-                  animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1200; from: 1 1 1; to: 0.2 0.2 0.2">
+                  animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1100; from: 1 1 1; to: 0.2 0.2 0.2">
         </a-cursor>
       </a-camera>
-
-      <!-- Support Manettes VR WebXR (Oculus / Vive / Pico) -->
       <a-entity laser-controls="hand: right" raycaster="objects: .hazard-clickable; far: 20"></a-entity>
       <a-entity laser-controls="hand: left" raycaster="objects: .hazard-clickable; far: 20"></a-entity>
     </a-entity>
@@ -233,64 +193,15 @@ Voici une version nettement améliorée et hautement immersive de votre applicat
   </a-scene>
 
   <script>
-    // Base de données pédagogique des risques SST
     const hazardsData = [
-      {
-        id: "h1",
-        name: "Stockage instable en hauteur",
-        pos: "-5 2.8 -4",
-        desc: "Risque de chute d'objets ou d'écrasement.",
-        prev: "Action : Arrimer correctement les charges et respecter la hauteur max."
-      },
-      {
-        id: "h2",
-        name: "Câble électrique au sol",
-        pos: "-1.5 0.3 4",
-        desc: "Risque de trébuchement et d'électrocution.",
-        prev: "Action : Passages de câbles suspendus ou protégés par des passe-câbles."
-      },
-      {
-        id: "h3",
-        name: "Palette encombrant la voie",
-        pos: "0 0.6 -7",
-        desc: "Risque de collision ou d'obstacle sur voie de circulation.",
-        prev: "Action : Dégager immédiatement les voies tracées au sol."
-      },
-      {
-        id: "h4",
-        name: "Liquide glissant non nettoyé",
-        pos: "-2.5 0.3 1",
-        desc: "Risque majeur de glissade et de chute de hauteur-plain.",
-        prev: "Action : Baliser la zone et épandre de l'absorbant."
-      },
-      {
-        id: "h5",
-        name: "Coactivité Chariot / Piéton",
-        pos: "1.8 1.6 -2.5",
-        desc: "Risque de heurt ou d'écrasement grave.",
-        prev: "Action : Conserver une distance de sécurité et porter un chasuble VFI."
-      },
-      {
-        id: "h6",
-        name: "Issue de secours obstruée",
-        pos: "11.2 1.2 -13",
-        desc: "Impossibilité d'évacuer en cas d'incendie.",
-        prev: "Action : Maintenir les accès d'évacuation dégagés en permanence."
-      },
-      {
-        id: "h7",
-        name: "Échelle mal positionnée",
-        pos: "-11.2 2.2 -6",
-        desc: "Risque de basculement et de chute de hauteur.",
-        prev: "Action : Respecter l'angle d'inclinaison (75°) et amarrer le haut."
-      },
-      {
-        id: "h8",
-        name: "Machine sans carter de protection",
-        pos: "-6 1.8 6",
-        desc: "Risque de hantise, d'entraînement ou de sectionnement.",
-        prev: "Action : Interdiction d'utiliser la machine sans son carter actif."
-      }
+      { id: "h1", name: "Stockage instable en hauteur", pos: "-5 2.8 -4", desc: "Risque de chute d'objets lourds sur les opérateurs.", prev: "Action : Arrimer la charge et respecter les limites de hauteur." },
+      { id: "h2", name: "Câble électrique au sol", pos: "-1.5 0.3 4", desc: "Risque de trébuchement et de détérioration de gaine.", prev: "Action : Utiliser des ponts de câbles ou une suspension aérienne." },
+      { id: "h3", name: "Palette encombrant la voie", pos: "0 0.6 -7", desc: "Obstruction de la voie principale de circulation des engins.", prev: "Action : Dégager immédiatement la zone de circulation tracée." },
+      { id: "h4", name: "Liquide glissant non nettoyé", pos: "-2.5 0.3 1", desc: "Risque majeur de glissade de plain-pied.", prev: "Action : Nettoyer, sécher et poser un panneau de signalisation temporaire." },
+      { id: "h5", name: "Coactivité Chariot / Piéton", pos: "1.8 1.6 -2.5", desc: "Risque de heurt par engin de manutention en mouvement.", prev: "Action : Séparer les flux piétons et porter des équipements haute visibilité." },
+      { id: "h6", name: "Issue de secours obstruée", pos: "11.2 1.2 -13", desc: "Retard ou impossibilité d'évacuation en cas d'urgence.", prev: "Action : Interdire tout stockage devant les issues réglementaires." },
+      { id: "h7", name: "Échelle mal positionnée", pos: "-11.2 2.2 -6", desc: "Risque de glissement de l'embase et de chute de hauteur.", prev: "Action : Respecter l'angle de 75° et fixer solidement l'échelle." },
+      { id: "h8", name: "Machine sans carter de protection", pos: "-6 1.8 6", desc: "Risque d'entraînement corporel sur éléments en rotation.", prev: "Action : Ne jamais faire fonctionner la machine sans ses carters verrouillés." }
     ];
 
     let score = 0;
@@ -301,89 +212,67 @@ Voici une version nettement améliorée et hautement immersive de votre applicat
 
     document.querySelector('#total').textContent = totalHazards;
 
-    // Synthèse Audio (Web Audio API / SpeechSynthesis pour feedback vocal)
     function speak(text) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         const msg = new SpeechSynthesisUtterance(text);
         msg.lang = 'fr-FR';
-        msg.rate = 1.0;
         window.speechSynthesis.speak(msg);
       }
     }
 
-    // Instanciation dynamique des marqueurs 3D
     hazardsData.forEach(hazard => {
       const entity = document.createElement('a-entity');
       entity.setAttribute('position', hazard.pos);
       
-      // Sphère d'interaction
       const sphere = document.createElement('a-sphere');
       sphere.setAttribute('class', 'hazard-clickable');
-      sphere.setAttribute('radius', '0.35');
-      sphere.setAttribute('material', 'color: #e74c3c; emissive: #e74c3c; emissiveIntensity: 0.5; opacity: 0.85; transparent: true');
+      sphere.setAttribute('radius', '0.32');
+      sphere.setAttribute('material', 'color: #e74c3c; emissive: #c0392b; emissiveIntensity: 0.6; opacity: 0.88');
       sphere.setAttribute('animation__pulse', 'property: scale; dir: alternate; dur: 800; loop: true; to: 1.3 1.3 1.3');
-      
-      // Anneau indicateur autour de la zone
-      const ring = document.createElement('a-ring');
-      ring.setAttribute('rotation', '-90 0 0');
-      ring.setAttribute('radius-inner', '0.4');
-      ring.setAttribute('radius-outer', '0.6');
-      ring.setAttribute('material', 'color: #ff3300; opacity: 0.6; transparent: true');
 
       entity.appendChild(sphere);
-      entity.appendChild(ring);
 
-      // Événement au clic / regard maintenu
       sphere.addEventListener('click', () => {
         if (sphere.dataset.resolved === "true") return;
-        
         sphere.dataset.resolved = "true";
         score++;
         scoreEl.textContent = score;
 
-        // Effet visuel de validation (Devient Vert)
-        sphere.setAttribute('material', 'color: #2ecc71; emissive: #2ecc71; emissiveIntensity: 0.8; opacity: 0.9');
+        sphere.setAttribute('material', 'color: #2ecc71; emissive: #27ae60; emissiveIntensity: 0.8');
         sphere.removeAttribute('animation__pulse');
-        sphere.setAttribute('animation__validated', 'property: scale; to: 0.5 0.5 0.5; dur: 400');
+        sphere.setAttribute('animation__done', 'property: scale; to: 0.5 0.5 0.5; dur: 300');
 
-        // Mettre à jour le HUD 2D
-        feedbackEl.innerHTML = `<b>✔ ${hazard.name}</b><br><span style="font-size:0.85em; color:#ddd;">${hazard.prev}</span>`;
+        feedbackEl.innerHTML = `<b>✔ ${hazard.name}</b><br><span style="color:#ddd; font-size:0.9em;">${hazard.prev}</span>`;
 
-        // Mettre à jour le Panneau Immersif 3D VR
         const vrPanel = document.querySelector('#vr-panel');
         document.querySelector('#vr-panel-title').setAttribute('value', hazard.name.toUpperCase());
         document.querySelector('#vr-panel-desc').setAttribute('value', hazard.desc);
         document.querySelector('#vr-panel-action').setAttribute('value', hazard.prev);
         vrPanel.setAttribute('visible', 'true');
 
-        // Feedback Audio Vocal
-        speak(`Danger détecté : ${hazard.name}`);
+        speak(`Danger validé : ${hazard.name}`);
 
-        // Vérification condition de victoire
         if (score === totalHazards) {
           setTimeout(() => {
-            feedbackEl.innerHTML = "<b style='color:#2ecc71;'>🎉 EXCELLENT ! TOUS LES DANGERS ONT ÉTÉ IDENTIFIÉS.</b>";
-            speak("Félicitations, vous avez identifié l'ensemble des risques de l'entrepôt.");
-          }, 1000);
+            feedbackEl.innerHTML = "<b style='color:#2ecc71;'>🎉 MISSION ACCOMPLIE : Tous les risques identifiés !</b>";
+            speak("Félicitations, mission de prévention réussie.");
+          }, 800);
         }
       });
 
       hazardsContainer.appendChild(entity);
     });
 
-    // Gestion du redimensionnement de scène
     const scene = document.querySelector('a-scene');
-    function handleResize() {
+    function resize() {
       if (scene.renderer) {
         scene.resize();
         scene.renderer.setSize(window.innerWidth, window.innerHeight, false);
       }
     }
-    window.addEventListener('load', () => setTimeout(handleResize, 300));
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('load', () => setTimeout(resize, 250));
+    window.addEventListener('resize', resize);
   </script>
 </body>
 </html>
-
-```
