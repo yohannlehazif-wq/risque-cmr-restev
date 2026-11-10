@@ -1,4 +1,7 @@
-# Sources 3D
-- Forklift : https://1designtool.com/3d/models/warehouse-and-logistics-forklift
-- Rack : https://3dassets.dev/assets/factory-conveyor-network-factory-conveyor-network-logi-48a6b6d0
-- Pallets : https://1designtool.com/3d/models/warehouse-and-logistics-pallets
+# Sources
+- A-Frame 1.8.0 : https://aframe.io/
+- Forklift GLB : https://1designtool.com/3d/models/warehouse-and-logistics-forklift
+- Rack GLB : https://3dassets.dev/assets/factory-conveyor-network-factory-conveyor-network-logi-48a6b6d0
+- Pallets GLB : https://1designtool.com/3d/models/warehouse-and-logistics-pallets
+
+Les câbles, engrenages, flaques, personnage articulé et rayonnages détaillés sont générés par le code du prototype.
