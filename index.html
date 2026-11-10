@@ -12,7 +12,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111;font-f
 </head>
 <body>
 <div id="overlay">
-<h1>RESTEV 85 · SST VR</h1>
+<h1>RESTEV 85 · SST VR · MAX GLB</h1>
 <p>Dangers identifiés : <span class="accent" id="score">0 / 8</span></p>
 <p id="mission">Inspectez l’entrepôt et pointez les zones dangereuses.</p>
 <p id="last" class="dangerText"></p>
@@ -22,7 +22,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111;font-f
 <button class="help" id="helpBtn">AIDE</button>
 <button class="reset" id="resetBtn">RECOMMENCER</button>
 </div>
-<div class="mobileHelp" id="loadState">Chargement des modèles 3D…</div>
+<div class="mobileHelp" id="loadState">Chargement de 12 familles de modèles 3D…</div>
 
 <a-scene id="scene" renderer="antialias:true; colorManagement:true; physicallyCorrectLights:true" shadow="type:pcfsoft" webxr="optionalFeatures: local-floor, bounded-floor, hand-tracking" xr-mode-ui="enabled:true">
 <a-assets>
@@ -34,6 +34,16 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111;font-f
   <a-mixin id="steel" material="color:#49535a; metalness:.55; roughness:.55"></a-mixin>
   <a-mixin id="orange" material="color:#a75a24; metalness:.18; roughness:.75"></a-mixin>
   <a-mixin id="cardboard" material="color:#ae7642; roughness:.92"></a-mixin>
+
+  <a-asset-item id="aisleGLB" src="https://cdn.3dassets.dev/assets/23990/v1/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="rackTallGLB" src="https://cdn.3dassets.dev/assets/27757/v1/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="palletTruckGLB" src="https://cdn.3dassets.dev/assets/34811/v1/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="ladderGLB" src="https://cdn.3dassets.dev/assets/23102/v1/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="agvGLB" src="https://cdn.3dassets.dev/assets/38994/v1/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="conveyorLongGLB" src="https://cdn.3dassets.dev/assets/26226/v1/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="conveyorShortGLB" src="https://cdn.3dassets.dev/assets/26223/v1/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="workbenchGLB" src="https://cdn.3dassets.dev/assets/26393/v1/model.glb" crossorigin="anonymous"></a-asset-item>
+  <a-asset-item id="platformGLB" src="https://cdn.3dassets.dev/assets/26408/v1/model.glb" crossorigin="anonymous"></a-asset-item>
 </a-assets>
 
 <!-- lumière industrielle -->
@@ -67,6 +77,32 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111;font-f
 <a-entity gltf-model="#rackGLB" position="10 0 -8" rotation="0 -90 0" shadow="cast:true;receive:true"></a-entity>
 <a-entity gltf-model="#rackGLB" position="10 0 -1" rotation="0 -90 0" shadow="cast:true;receive:true"></a-entity>
 <a-entity gltf-model="#rackGLB" position="10 0 6" rotation="0 -90 0" shadow="cast:true;receive:true"></a-entity>
+
+
+<!-- Environnement GLB enrichi : objets à échelle réelle -->
+<a-entity id="glbEnvironment">
+  <!-- grande allée complète, utilisée au fond pour densifier sans gêner la mission -->
+  <a-entity gltf-model="#aisleGLB" position="0 0 -13.5" rotation="0 0 0" scale=".82 .82 .82" shadow="cast:true;receive:true"></a-entity>
+  <!-- rayonnages hauts complémentaires -->
+  <a-entity gltf-model="#rackTallGLB" position="-13 0 10" rotation="0 90 0" shadow="cast:true;receive:true"></a-entity>
+  <a-entity gltf-model="#rackTallGLB" position="13 0 10" rotation="0 -90 0" shadow="cast:true;receive:true"></a-entity>
+  <!-- transpalette manuel -->
+  <a-entity gltf-model="#palletTruckGLB" position="4.4 0 7.2" rotation="0 135 0" shadow="cast:true;receive:true"></a-entity>
+  <!-- échelle industrielle mal positionnée -->
+  <a-entity gltf-model="#ladderGLB" position="-13 0 3.5" rotation="0 90 -10" scale=".8 .8 .8" shadow="cast:true;receive:true"></a-entity>
+  <!-- AGV et convoyeurs -->
+  <a-entity gltf-model="#agvGLB" position="-5.2 0 8.5" rotation="0 25 0" shadow="cast:true;receive:true"></a-entity>
+  <a-entity gltf-model="#conveyorLongGLB" position="8.1 0 8.2" rotation="0 0 0" shadow="cast:true;receive:true"></a-entity>
+  <a-entity gltf-model="#conveyorShortGLB" position="8.1 0 12" rotation="0 0 0" shadow="cast:true;receive:true"></a-entity>
+  <!-- postes de travail et plateforme de maintenance -->
+  <a-entity gltf-model="#workbenchGLB" position="-7.5 0 13" rotation="0 180 0" shadow="cast:true;receive:true"></a-entity>
+  <a-entity gltf-model="#workbenchGLB" position="-4.8 0 13" rotation="0 180 0" shadow="cast:true;receive:true"></a-entity>
+  <a-entity gltf-model="#platformGLB" position="12.2 0 4.5" rotation="0 -90 0" shadow="cast:true;receive:true"></a-entity>
+  <!-- répétitions légères pour donner du volume -->
+  <a-entity gltf-model="#palletGLB" position="-6.2 0 6.5" rotation="0 12 0" shadow="cast:true;receive:true"></a-entity>
+  <a-entity gltf-model="#palletGLB" position="5.8 0 11.8" rotation="0 -8 0" shadow="cast:true;receive:true"></a-entity>
+  <a-entity gltf-model="#palletGLB" position="-8.5 0 -5.5" rotation="0 90 0" shadow="cast:true;receive:true"></a-entity>
+</a-entity>
 
 <!-- chariot élévateur réaliste GLB -->
 <a-entity id="forklift" gltf-model="#forkliftGLB" position="-2.8 0 -2.2" rotation="0 22 0" scale="1 1 1" shadow="cast:true;receive:true"></a-entity>
@@ -161,7 +197,9 @@ document.querySelector('#resetBtn').onclick=()=>location.reload();
 document.querySelector('#helpBtn').onclick=()=>alert('Ordinateur : cliquez dans la scène, regardez avec la souris et déplacez-vous avec ZQSD/WASD. Casque : cliquez sur ENTRER EN VR, pointez une balise rouge avec un contrôleur et pressez la gâchette.');
 
 const assetsEl=document.querySelector('a-assets');
-assetsEl.addEventListener('loaded',()=>{document.querySelector('#loadState').textContent='PC : clic + souris, ZQSD/WASD · Casque : viser puis gâchette';});
+let loadedModels=0, failedModels=0;
+document.querySelectorAll('[gltf-model]').forEach(el=>{el.addEventListener('model-loaded',()=>{loadedModels++;document.querySelector('#loadState').textContent=`Modèles 3D chargés : ${loadedModels}`;});el.addEventListener('model-error',()=>{failedModels++;document.querySelector('#loadState').textContent=`${failedModels} modèle(s) en échec. Testez un autre réseau.`;});});
+assetsEl.addEventListener('loaded',()=>{document.querySelector('#loadState').textContent='Décor chargé · PC : ZQSD/WASD · Casque : viser puis gâchette';});
 setTimeout(()=>{if(!assetsEl.hasLoaded)document.querySelector('#loadState').textContent='Chargement lent : vérifiez la connexion Internet et les CDN 3D.';},12000);
 document.querySelectorAll('[gltf-model]').forEach(el=>el.addEventListener('model-error',e=>{document.querySelector('#loadState').textContent='Un modèle 3D externe n’a pas chargé. Rechargez la page ou testez un autre réseau.';}));
 
