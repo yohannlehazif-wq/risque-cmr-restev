@@ -1,8 +1,16 @@
-# Sources des modèles 3D
+# Sources GLB
 
 - Forklift: https://1designtool.com/3d/models/warehouse-and-logistics-forklift
-  Direct GLB: https://assets.stoicsoft.com/1designtool/3d/models/warehouse-and-logistics-forklift/e3b6b7a023/model.glb
-- Warehouse pallet rack: https://3dassets.dev/assets/factory-conveyor-network-factory-conveyor-network-logi-48a6b6d0
-  Direct GLB: https://cdn.3dassets.dev/assets/26383/v1/model.glb
 - Pallets: https://1designtool.com/3d/models/warehouse-and-logistics-pallets
-  Direct GLB: https://assets.stoicsoft.com/1designtool/3d/models/warehouse-and-logistics-pallets/f30830b0b5/model.glb
+- Warehouse rack: https://3dassets.dev/assets/factory-conveyor-network-factory-conveyor-network-logi-48a6b6d0
+- Tall pallet rack: https://3dassets.dev/assets/machine-shop-and-factory-hall-machine-shop-and-factory-ebf92b35
+- DIY warehouse aisle: https://3dassets.dev/assets/hardware-store-and-diy-warehouse-warehou-f3ddb545-starter-scene
+- Hand pallet truck: https://3dassets.dev/assets/parcel-depot-and-sorting-hall-parcel-depot-and-sorting-cdf2cc74
+- Ladder: https://3dassets.dev/assets/arena-shooter-map-kit-ladder-35d37add
+- AGV loader: https://3dassets.dev/assets/robots-and-drones-kit-agv-loader-b0e56fc5
+- Long conveyor: https://3dassets.dev/assets/factory-conveyor-network-factory-conveyor-network-belt-82c0ce85
+- Powered conveyor: https://3dassets.dev/assets/factory-conveyor-network-factory-conveyor-network-belt-039c1dbb
+- Assembly workbench: https://3dassets.dev/assets/factory-conveyor-network-factory-conveyor-network-logi-79df9d2c
+- Maintenance platform: https://3dassets.dev/assets/factory-conveyor-network-factory-conveyor-network-logi-804ad3e6
+
+3dassets.dev models listed above are CC0. Check each source page before redistribution. Forklift and pallets are listed as free for commercial use on their source pages.
